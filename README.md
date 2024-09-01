@@ -81,7 +81,7 @@ License
 ---
 
 ## Author
- Pathum J Dissanayake 
+ Pathum Jeewantha Dissanayake 
 
 ---
 
