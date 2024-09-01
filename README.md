@@ -6,6 +6,8 @@ Supports wear leveling for EEPROM with customizable memory size and page size.
 Allows writing and reading of data with wear leveling to prevent excessive wear on specific memory locations.
 Optimized for M95M02 EEPROM but can be adapted for other EEPROMs with similar characteristics.
 Usage
+
+
 Initialization
 To initialize the EEPROM with wear leveling, call the EEPROM_init function with the memory size (in KB), page size (in bytes), and the number of data blocks to manage:
 
@@ -14,6 +16,7 @@ uint8_t EEPROM_init(uint8_t mem_size, uint8_t page_size, uint8_t no_of_dat);
 mem_size: Total EEPROM memory size in KB.
 page_size: Size of each page in bytes.
 no_of_dat: Number of data blocks to manage.
+
 
 Writing and Reading Data
 To write or read data with wear leveling, use the CALL_EEPROM function:
@@ -30,6 +33,7 @@ SEN_check
 The SEN_check function is used internally to determine the correct address and page for the next write operation:
 
 uint32_t SEN_check(uint32_t start, uint32_t stop, uint8_t step, uint32_t last_add, uint32_t curru_page);
+
 
 Example
 Here’s an example of how to use the library:
@@ -54,8 +58,10 @@ This library requires the following dependencies:
 EEPROM_SPI.h: SPI communication functions for EEPROM.
 EEPROM_Data_struct.h: Data structures used for managing EEPROM data.
 
+
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 
 Author
 Pathum J Dissanayake
