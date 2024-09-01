@@ -38,7 +38,7 @@ void CALL_EEPROM(uint8_t data_no, uint8_t data_size, bool command);
 - command: Set to 1 for write operations or 0 for read operations.
 
 
-###Internal Functions
+### Internal Functions
 - SEN_check
 The SEN_check function is used internally to determine the correct address and page for the next write operation:
 
@@ -78,7 +78,7 @@ This library requires the following dependencies:
   
 ---
 
-### License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
   
 ---
