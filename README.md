@@ -56,7 +56,7 @@ Here’s an example of how to use the library:
 #include "EEPROM_WL.h"
 
 int main() {
-    EEPROM_init(256, 256, 10); // Initialize EEPROM with 256KB memory, 256B page size, managing 10 data blocks
+    EEPROM_init(256, 256, 16); // Initialize EEPROM with 256KB memory, 256B page size, managing 10 data blocks
 
     // Write 8 bytes of data to block 1
     CALL_EEPROM(1, 8, 1);
