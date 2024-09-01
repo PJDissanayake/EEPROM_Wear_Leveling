@@ -75,9 +75,11 @@ This library requires the following dependencies:
 
 - EEPROM_SPI.h: SPI communication functions for EEPROM.
 - EEPROM_Data_struct.h: Data structures used for managing EEPROM data.
+  
+---
 
-###License
-- This project is licensed under the MIT License - see the LICENSE file for details.
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
   
 ---
 
