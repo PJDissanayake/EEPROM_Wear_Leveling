@@ -18,8 +18,6 @@ uint8_t dum1={0xff};
 uint8_t rec_data[4];
 uint8_t rec_data1[1];
 
-
-
 uint32_t last_writeadd;
 uint8_t currunt_page;
 uint32_t page_bound;
