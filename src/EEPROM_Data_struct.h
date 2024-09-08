@@ -25,7 +25,7 @@ uint32_t page_bound;  // Current page boundary
 uint32_t prev_add;  // Previous address
 uint32_t next_write_add;  // Next write address
 uint32_t read_add;  // Read address
-uint8_t current_page;  // Current page number
+uint32_t current_page;  // Current page number
 
 
 // EEPROM Constants
