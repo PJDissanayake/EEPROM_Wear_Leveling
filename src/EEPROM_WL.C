@@ -30,7 +30,13 @@ void CALL_EEPROM(uint8_t data_no,uint8_t data_size, bool command){ //command 1 f
       uint32_t u_bound=base_adr*(data_no);
       uint32_t l_bound=u_bound-base_adr;
 
-      SEN_check(l_bound, u_bound, data_size, &last_writeadd, &current_page);
+      int status = SEN_check(l_bound, u_bound, data_size, &last_writeadd, &current_page);
+		if (status == -1) {
+  		// Handle the error (e.g., sentinel byte not found)
+    		// You can either stop the operation or take a corrective action
+    		return;
+		}
+
       uint32_t page_bound = l_bound + (current_page * pag + pag);
 
       if(command){//write
@@ -60,31 +66,44 @@ void CALL_EEPROM(uint8_t data_no,uint8_t data_size, bool command){ //command 1 f
   }
 
 
-uint32_t SEN_check(uint32_t start, uint32_t stop, uint8_t step, uint32_t *last_add, uint32_t *current_page){
-  	for(uint32_t c=0x01;c<(base_adr/pag);c++){
-  	for (uint32_t var = (start+((stop-start)/pag)*c); (var+step+1)<stop; var+=(step+1)) {
-  		read_1byte(var);
-  		if(rec_data1[0]==sen_byte){
-  			*last_add=var;
-  			*current_page=c;
-  			break;
-  			}
-  		else if(var>=(stop-(step+1))){
-			if(data_no==1){
-				*last_add=0;
-  				*current_page=0;	
-			}
-			else{
-  				*last_add=start-(step+1);
-  				*current_page=0;
-			}
-  			break;
-  			}
-  		}
-  	 }
+int SEN_check(uint32_t start, uint32_t stop, uint8_t step, uint32_t *last_add, uint32_t *current_page) {
+    bool found = false;
 
-	return *last_add;  
-  	}
+    for (uint32_t c = 0x01; c < (base_adr / pag); c++) {
+        for (uint32_t var = start + ((stop - start) / pag) * c; (var + step + 1) < stop; var += (step + 1)) {
+            read_1byte(var);
+
+            if (rec_data1[0] == sen_byte) {
+                *last_add = var;
+                *current_page = c;
+                found = true;
+                break;
+            }
+
+            if (var >= (stop - (step + 1))) {
+                if (data_no == 1) {
+                    *last_add = 0;
+                    *current_page = 0;
+                } else {
+                    *last_add = start - (step + 1);
+                    *current_page = 0;
+                }
+                break;
+            }
+        }
+
+        if (found) {
+            break;
+        }
+    }
+
+    // Return -1 if the sentinel byte was not found
+    if (!found) {
+        return -1;  // Error: sentinel byte not found
+    }
+
+    return 0;  // Success
+}
 
 
 
