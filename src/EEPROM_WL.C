@@ -26,7 +26,7 @@ uint8_t EEPROM_init(uint8_t mem_size,uint8_t page_size,uint8_t no_of_dat){ //inp
 	return 0;  // Return success or status code
 }
 
-void CALL_EEPROM(data_no, data_size, command){ //command 1 for write; 0 for read  ***input  byte value of data size
+void CALL_EEPROM(uint8_t data_no,uint8_t data_size, bool command){ //command 1 for write; 0 for read  ***input  byte value of data size
       uint32_t u_bound=base_adr*(data_no);
       uint32_t l_bound=u_bound-base_adr;
 
@@ -60,7 +60,7 @@ void CALL_EEPROM(data_no, data_size, command){ //command 1 for write; 0 for read
   }
 
 
-uint32_t SEN_check(uint32_t start, uint32_t stop, uint8_t step, uint32_t *last_add, uint32_t *curre_page){
+uint32_t SEN_check(uint32_t start, uint32_t stop, uint8_t step, uint32_t *last_add, uint32_t *current_page){
   	for(uint32_t c=0x01;c<(base_adr/pag);c++){
   	for (uint32_t var = (start+((stop-start)/pag)*c); (var+step+1)<stop; var+=(step+1)) {
   		read_1byte(var);
