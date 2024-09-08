@@ -20,6 +20,7 @@ uint8_t EEPROM_init(uint8_t mem_size,uint8_t page_size,uint8_t no_of_dat){ //inp
 	mem=mem_size*1024;
 	pag=page_size;
 	base_adr=mem/no_of_dat;
+	return 0;  // Return success or status code
 }
 
 void CALL_EEPROM(uint8_t data_no,uint8_t data_size,bool command){ //command 1 for write; 0 for read  ***input  byte value of data size
@@ -79,7 +80,7 @@ uint32_t SEN_check(uint32_t start,uint32_t stop,uint8_t step,uint32_t last_add,u
   		}
   	 }
 
-
+	return last_add;  // Return the updated last_add value
   	}
 
 
