@@ -20,11 +20,11 @@ uint8_t EEPROM_init(uint8_t mem_size,uint8_t page_size,uint8_t no_of_dat){ //inp
 }
 
 void CALL_EEPROM(uint8_t data_no,uint8_t data_size,bool command){ //command 1 for write; 0 for read  ***input  byte value of data size
-      uint32_t u_bound=(base_adr*(data_no);
+      uint32_t u_bound=base_adr*(data_no);
       uint32_t l_bound=u_bound-base_adr;
 
       SEN_check(l_bound, u_bound, data_size,last_writeadd,currunt_page);
-      uint32_t page_bound= l_bound+(currunt_page*Pag+Pag;
+      uint32_t page_bound = l_bound + (currunt_page * Pag) + Pag;
 
       if(command){//write
 	  	if(last_writeadd==0){
