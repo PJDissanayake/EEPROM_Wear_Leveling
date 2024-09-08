@@ -17,7 +17,7 @@
 
 uint32_t read_1byte(uint32_t address){
   		tx_buf[0]=READ;
-        tx_buf[1]=((address>>16)&0xff);
+                tx_buf[1]=((address>>16)&0xff);
   		tx_buf[2]=((address>>8)&0xff);
   		tx_buf[3]=(address&0xff);
 
@@ -30,8 +30,8 @@ uint32_t read_1byte(uint32_t address){
 
   uint32_t read_nbyte(uint32_t address,uint8_t size){
 	  	  uint32_t w_add=address+1;
-        tx_buf[0]=READ;
-        tx_buf[1]=((w_add>>16)&0xff);
+                tx_buf[0]=READ;
+                tx_buf[1]=((w_add>>16)&0xff);
   		tx_buf[2]=((w_add>>8)&0xff);
   		tx_buf[3]=(w_add&0xff);
   		uint8_t var_dum[size];
@@ -48,7 +48,7 @@ uint32_t read_1byte(uint32_t address){
 
 uint32_t write_1byte(uint32_t address1,uint8_t data_buf1[1]){
     		tx_buf1[0]=WRITE;
-            tx_buf1[1]=((address1>>16)&0xff);
+                tx_buf1[1]=((address1>>16)&0xff);
     		tx_buf1[2]=((address1>>8)&0xff);
     		tx_buf1[3]=(address1&0xff);
     		tx_buf1[4]=data_buf1[0];
