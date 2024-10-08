@@ -5,7 +5,7 @@
   Author:   Pathum J Dissanayake
   Updated:  Dec 15, 2023
   ******************************************************************************
-*/
+**/
 
 #ifndef SRC_EEPROM_DATA_STRUCT_H_
 #define SRC_EEPROM_DATA_STRUCT_H_
